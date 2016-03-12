@@ -141,6 +141,7 @@ public class FlickrFetchr {
             }
 
             item.setUrl(photoJSONObject.getString("url_s"));
+            item.setOwner(photoJSONObject.getString("owner"));
 
             items.add(item);
         }
