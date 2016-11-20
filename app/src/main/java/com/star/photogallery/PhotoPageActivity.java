@@ -15,7 +15,6 @@ public class PhotoPageActivity extends SingleFragmentActivity {
         return intent;
     }
 
-
     @Override
     protected Fragment createFragment() {
         return PhotoPageFragment.newInstance(getIntent().getData());
