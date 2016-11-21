@@ -77,4 +77,5 @@ public class PhotoPageFragment extends VisibleFragment {
 
         return view;
     }
+
 }

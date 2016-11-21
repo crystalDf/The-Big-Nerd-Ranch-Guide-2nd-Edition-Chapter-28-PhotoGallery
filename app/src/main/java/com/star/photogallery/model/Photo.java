@@ -48,4 +48,5 @@ public class Photo {
     public void setOwner(String owner) {
         mOwner = owner;
     }
+
 }
