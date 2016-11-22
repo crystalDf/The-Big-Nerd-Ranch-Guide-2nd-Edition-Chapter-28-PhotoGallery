@@ -1,14 +1,15 @@
 package com.star.photogallery;
 
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
@@ -23,7 +24,6 @@ public class PhotoPageFragment extends VisibleFragment {
 
     public static PhotoPageFragment newInstance(Uri uri) {
         Bundle args = new Bundle();
-
         args.putParcelable(ARG_URI, uri);
 
         PhotoPageFragment photoPageFragment = new PhotoPageFragment();
@@ -39,7 +39,7 @@ public class PhotoPageFragment extends VisibleFragment {
         mUri = getArguments().getParcelable(ARG_URI);
     }
 
-    @Nullable
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_photo_page, container, false);
@@ -67,12 +67,14 @@ public class PhotoPageFragment extends VisibleFragment {
                 appCompatActivity.getSupportActionBar().setSubtitle(title);
             }
         });
+
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 return false;
             }
         });
+
         mWebView.loadUrl(mUri.toString());
 
         return view;

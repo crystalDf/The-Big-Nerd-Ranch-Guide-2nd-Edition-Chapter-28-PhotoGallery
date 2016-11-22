@@ -8,8 +8,8 @@ import android.support.v4.app.Fragment;
 
 public class PhotoPageActivity extends SingleFragmentActivity {
 
-    public static Intent newIntent(Context context, Uri photoPageUri) {
-        Intent intent = new Intent(context, PhotoPageActivity.class);
+    public static Intent newIntent(Context packageContext, Uri photoPageUri) {
+        Intent intent = new Intent(packageContext, PhotoPageActivity.class);
         intent.setData(photoPageUri);
 
         return intent;
