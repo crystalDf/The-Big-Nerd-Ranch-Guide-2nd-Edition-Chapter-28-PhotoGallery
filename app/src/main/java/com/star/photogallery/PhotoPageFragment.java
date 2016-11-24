@@ -2,7 +2,9 @@ package com.star.photogallery;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -71,6 +73,13 @@ public class PhotoPageFragment extends VisibleFragment {
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (!request.getUrl().toString().startsWith("http")) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, request.getUrl());
+                        startActivity(intent);
+                        return true;
+                    }
+                }
                 return false;
             }
         });
