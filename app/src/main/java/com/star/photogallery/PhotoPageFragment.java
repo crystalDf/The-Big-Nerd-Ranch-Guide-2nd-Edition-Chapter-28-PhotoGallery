@@ -77,6 +77,7 @@ public class PhotoPageFragment extends VisibleFragment {
                     if (!request.getUrl().toString().startsWith("http")) {
                         Intent intent = new Intent(Intent.ACTION_VIEW, request.getUrl());
                         startActivity(intent);
+
                         return true;
                     }
                 }
